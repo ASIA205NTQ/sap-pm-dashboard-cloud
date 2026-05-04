@@ -1,0 +1,10 @@
+streamlit
+pandas
+numpy
+plotly
+lxml
+beautifulsoup4
+html5lib
+openpyxl
+xlsxwriter
+supabase>=2.0.0
