@@ -922,7 +922,7 @@ if configured:
     except Exception as exc:
         st.warning(f"Đã cấu hình Supabase nhưng chưa đọc được snapshot đã lưu: {exc}")
 else:
-    st.warning("Chưa cấu hình Supabase. App vẫn chạy được bằng upload trực tiếp, nhưng chưa thể lưu dữ liệu để sếp mở link là thấy dashboard.")
+    st.warning("Chưa cấu hình Supabase. App vẫn chạy được bằng upload trực tiếp, nhưng chưa thể lưu dữ liệu để mở link là thấy dashboard.")
 
 with st.sidebar:
     st.header("Dữ liệu báo cáo")
@@ -970,7 +970,7 @@ else:
         prev_mo_file = st.file_uploader("MO tuần trước", type=["mht", "html", "xls"], key="prev_mo")
         report_date_input = st.date_input("Ngày chốt báo cáo", value=date.today())
         label = st.text_input("Tên kỳ báo cáo", value=f"Báo cáo NO/MO tính đến {format_vn_date(report_date_input)}")
-        save_to_cloud = st.checkbox("Lưu bộ file này lên cloud để sếp mở link là thấy dashboard", value=configured, disabled=not configured)
+        save_to_cloud = st.checkbox("Lưu bộ file này lên cloud để khi mở link là thấy dashboard", value=configured, disabled=not configured)
         run_btn = st.button("🚀 Phân tích & cập nhật dashboard", use_container_width=True)
 
     if not curr_no_file or not curr_mo_file:
@@ -989,7 +989,7 @@ else:
             curr_snapshot["metadata"] = saved_meta
             if prev_snapshot:
                 prev_snapshot["metadata"] = saved_meta
-            st.success(f"Đã lưu dữ liệu lên cloud. Sếp mở link sẽ thấy bản cập nhật lúc {format_vn_datetime(saved_meta.get('uploaded_at'))}.")
+            st.success(f"Đã lưu dữ liệu lên cloud. Khi mở link sẽ thấy bản cập nhật lúc {format_vn_datetime(saved_meta.get('uploaded_at'))}.")
     except Exception as exc:
         st.error(f"Không đọc/lưu được file: {exc}")
         st.stop()
